@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="mainpane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pdm.controller.MemberManage">
+   <top>
+      <AnchorPane prefHeight="0.0" prefWidth="709.0" style="-fx-background-color: #ffffff;" stylesheets="@style.css" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="46.0" prefWidth="709.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
+               <children>
+                  <Button fx:id="home" mnemonicParsing="false" onAction="#homeClick" styleClass="round-button" text="Home" />
+                  <Pane prefHeight="46.0" prefWidth="23.0" />
+                  <MenuButton mnemonicParsing="false" prefHeight="27.0" prefWidth="49.0" styleClass="round-button" text="☰" textAlignment="CENTER">
+                     <items>
+                        <MenuItem fx:id="book" mnemonicParsing="false" onAction="#bookClick" text="Book Catalog" />
+                        <MenuItem fx:id="members" mnemonicParsing="false" onAction="#memClick" text="Members Manage" />
+                        <MenuItem fx:id="loans" mnemonicParsing="false" onAction="#loanClick" text="Loans Manage" />
+                        <MenuItem fx:id="reservations" mnemonicParsing="false" onAction="#reserClick" text="Reservations" />
+                        <MenuItem fx:id="fines" mnemonicParsing="false" onAction="#fineClick" text="Fines" />
+                        <MenuItem fx:id="report" mnemonicParsing="false" onAction="#reportClick" text="Report" />
+                     </items>
+                  </MenuButton>
+                  <Pane prefHeight="46.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Library Management System" textAlignment="CENTER">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Text>
+                  <Pane prefHeight="46.0" prefWidth="0.0" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Pane>
+                  <TextField fx:id="search_field" onAction="#search" promptText="Search members (Enter)" />
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="mem_table" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn fx:id="col_memid" prefWidth="70.0" text="ID" />
+                <TableColumn fx:id="col_name" prefWidth="170.0" text="Full Name" />
+                <TableColumn fx:id="col_email" prefWidth="180.0" text="Email" />
+                <TableColumn fx:id="col_cat" prefWidth="140.0" text="Category" />
+                <TableColumn fx:id="col_status" prefWidth="90.0" text="Status" />
+                <TableColumn fx:id="col_expiry" prefWidth="100.0" text="Expiry" />
+                <TableColumn fx:id="col_lim" prefWidth="70.0" text="Limit" />
+                <TableColumn fx:id="col_period" prefWidth="70.0" text="Period" />
+              </columns>
+            </TableView>
+            <VBox alignment="TOP_RIGHT" pickOnBounds="false" spacing="8.0" StackPane.alignment="TOP_RIGHT">
+               <children>
+                  <Label fx:id="mem_count" text="0 Members" />
+                  <Button mnemonicParsing="false" onAction="#clearForm" text="New / Clear" />
+               </children>
+               <padding>
+                  <Insets right="8.0" top="8.0" />
+               </padding>
+            </VBox>
+         </children>
+      </StackPane>
+   </center>
+   <bottom>
+      <VBox spacing="4.0" BorderPane.alignment="CENTER">
+         <children>
+            <TitledPane expanded="false" text="Member details">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="210.0" prefWidth="200.0">
+                     <children>
+                        <GridPane hgap="10.0" vgap="8.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                          <columnConstraints>
+                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="220.0" />
+                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="220.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Member ID" />
+                              <TextField fx:id="id_field" editable="false" promptText="Auto-generated for new member" GridPane.columnIndex="1" />
+                              <Label text="Full Name" GridPane.rowIndex="1" />
+                              <TextField fx:id="name_field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label text="Category" GridPane.rowIndex="2" />
+                              <ChoiceBox fx:id="cat_select" prefWidth="220.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label text="Account Status" GridPane.rowIndex="3" />
+                              <ChoiceBox fx:id="status_select" prefWidth="220.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                              <Label text="Email" GridPane.columnIndex="2" />
+                              <TextField fx:id="email_field" GridPane.columnIndex="3" />
+                              <Label text="Identity Card" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <TextField fx:id="identity_field" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <Label text="Membership Expiry" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <DatePicker fx:id="expiry_picker" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                              <Label text="Tip" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                              <Label text="Select a row to edit, or New/Clear to add." GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                           </children>
+                        </GridPane>
+                        <HBox spacing="10.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#addMember" text="Add member" />
+                              <Button mnemonicParsing="false" onAction="#updateMember" text="Update" />
+                              <Button mnemonicParsing="false" onAction="#deleteMember" text="Delete" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
+            <TitledPane expanded="false" text="Overdue loans today (selected member)">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="170.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="overdue_table" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <columns>
+                              <TableColumn fx:id="col_od_loanid" prefWidth="80.0" text="Loan ID" />
+                              <TableColumn fx:id="col_od_detailid" prefWidth="70.0" text="Detail" />
+                              <TableColumn fx:id="col_od_title" prefWidth="260.0" text="Book Title" />
+                              <TableColumn fx:id="col_od_copy" prefWidth="70.0" text="Copy" />
+                              <TableColumn fx:id="col_od_borrow" prefWidth="100.0" text="Borrow Date" />
+                              <TableColumn fx:id="col_od_due" prefWidth="100.0" text="Due Date" />
+                              <TableColumn fx:id="col_od_days" prefWidth="80.0" text="Days Late" />
+                              <TableColumn fx:id="col_od_fine" prefWidth="110.0" text="Fine Amount" />
+                           </columns>
+                        </TableView>
+                        <Label fx:id="overdue_info" text="Select a member to view overdue loans today." AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="6.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </TitledPane>
+         </children>
+      </VBox>
+   </bottom>
+</BorderPane>

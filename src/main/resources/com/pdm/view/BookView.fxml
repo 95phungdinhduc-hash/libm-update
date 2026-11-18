@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="mainpane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pdm.controller.TitleCopyManage">
+   <top>
+      <AnchorPane prefHeight="0.0" prefWidth="709.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="46.0" prefWidth="709.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
+               <children>
+                  <Button fx:id="home" mnemonicParsing="false" onAction="#homeClick" styleClass="round-button" text="Home" />
+                  <Pane prefHeight="46.0" prefWidth="23.0" />
+                  <MenuButton mnemonicParsing="false" prefHeight="27.0" prefWidth="49.0" styleClass="round-button" text="☰" textAlignment="CENTER">
+                     <items>
+                        <MenuItem fx:id="book" mnemonicParsing="false" onAction="#bookClick" text="Book Catalog" />
+                        <MenuItem fx:id="members" mnemonicParsing="false" onAction="#memClick" text="Members Manage" />
+                        <MenuItem fx:id="loans" mnemonicParsing="false" onAction="#loanClick" text="Loans Manage" />
+                        <MenuItem fx:id="reservations" mnemonicParsing="false" onAction="#reserClick" text="Reservations" />
+                        <MenuItem fx:id="fines" mnemonicParsing="false" onAction="#fineClick" text="Fines" />
+                        <MenuItem fx:id="report" mnemonicParsing="false" onAction="#reportClick" text="Report" />
+                     </items>
+                  </MenuButton>
+                  <Pane prefHeight="46.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Library Management System" textAlignment="CENTER">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Text>
+                  <Pane prefHeight="46.0" prefWidth="0.0" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Pane>
+                  <TextField fx:id="search_field" onAction="#search" promptText="Enter to search" />
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </top>
+   <bottom>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Copies">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="copy_table" prefHeight="171.0" prefWidth="699.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="581.0" AnchorPane.topAnchor="0.0">
+                          <columns>
+                            <TableColumn fx:id="col_copyid" prefWidth="75.0" text="Copy ID" />
+                            <TableColumn fx:id="col_shelf" prefWidth="257.0" text="Shelf location" />
+                              <TableColumn fx:id="col_status" prefWidth="100.0" text="Status" />
+                              <TableColumn fx:id="col_note" prefWidth="266.0" text="notes" />
+                          </columns>
+                        </TableView>
+                        <GridPane prefHeight="127.0" prefWidth="249.0" AnchorPane.leftAnchor="800.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="154.0" minWidth="10.0" prefWidth="149.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Button fx:id="add_copy_btn" alignment="BOTTOM_RIGHT" mnemonicParsing="false" onAction="#addCopy" text="add copy +" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Label text="Shelf Locatation" />
+                              <Label layoutX="10.0" layoutY="17.0" text="Status" GridPane.rowIndex="1" />
+                              <Label layoutX="10.0" layoutY="47.0" text="Notes" GridPane.rowIndex="2" />
+                              <TextField fx:id="shelf_field" GridPane.columnIndex="1" />
+                              <ChoiceBox fx:id="copy_status_choice" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="copy_note_field" layoutX="110.0" layoutY="46.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           </children>
+                        </GridPane>
+                        <CheckBox fx:id="show_available_copies_checkbox" layoutX="700.0" layoutY="153.0" mnemonicParsing="false" onAction="#showAvailableCopy" text="Show only available copies" />
+                        <Button layoutX="700.0" layoutY="127.0" mnemonicParsing="false" onAction="#deleteCopy" text="Delete" />
+                     </children>
+                  </AnchorPane>
+               </content>
+          </Tab>
+          <Tab text="Authors">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="auth_table" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="173.0" prefWidth="665.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="615.0" AnchorPane.topAnchor="0.0">
+                          <columns>
+                            <TableColumn fx:id="col_authid" prefWidth="75.0" text="Author ID" />
+                            <TableColumn fx:id="col_authname" prefWidth="286.0" text="Name" />
+                              <TableColumn fx:id="col_bio" prefWidth="303.0" text="Biography" />
+                          </columns>
+                        </TableView>
+                        <GridPane prefHeight="66.0" prefWidth="340.0" AnchorPane.leftAnchor="800.0" AnchorPane.topAnchor="20.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <TextField fx:id="author_name_field" promptText="Author Name" GridPane.columnIndex="1" />
+                              <TextField fx:id="author_bio_field" promptText="Biography" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <ComboBox fx:id="author_field" editable="true" prefWidth="150.0" promptText="enter to find author" />
+                              <CheckBox fx:id="use_exist_author_checkbox" mnemonicParsing="false" text="Use existing" GridPane.rowIndex="1" />
+                           </children>
+                        </GridPane>
+                        <Button fx:id="add_author_book_btn" layoutX="913.0" layoutY="98.0" mnemonicParsing="false" onAction="#addAuthorToBook" text="Add author to title" />
+                        <Button fx:id="move_up_btn" layoutX="665.0" layoutY="98.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="81.0" text="Move up" />
+                        <Button fx:id="move_down_btn" layoutX="665.0" layoutY="123.0" mnemonicParsing="false" opacity="0.0" text="Move Down" />
+                        <Button fx:id="remove_btn" layoutX="665.0" layoutY="148.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="81.0" text="Remove" />
+                     </children>
+                  </AnchorPane>
+               </content></Tab>
+            <Tab text="Edit Selected Title">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <GridPane prefHeight="120.0" prefWidth="311.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="0.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="151.0" minWidth="10.0" prefWidth="102.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="209.0" minWidth="10.0" prefWidth="209.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="ISBN:" />
+                              <Label text="Title:" GridPane.rowIndex="1" />
+                              <Label text="Publish year:" GridPane.rowIndex="2" />
+                              <Label text="Publisher ID:" GridPane.rowIndex="3" />
+                              <TextField fx:id="u_isbn_field" GridPane.columnIndex="1" />
+                              <TextField fx:id="u_title_field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="u_year_field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="u_publisherid_field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#updateBook" text="Save" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Add New Title">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <GridPane prefHeight="129.0" prefWidth="270.0" AnchorPane.leftAnchor="1000.0" AnchorPane.topAnchor="10.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="88.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="182.0" minWidth="10.0" prefWidth="182.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Publisher Name" />
+                              <Label text="Address" GridPane.rowIndex="1" />
+                              <Label text="Contact email" GridPane.rowIndex="2" />
+                              <TextField fx:id="publisher_name_field" GridPane.columnIndex="1" />
+                              <TextField fx:id="publisher_address_field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="publisher_email_field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button mnemonicParsing="false" onAction="#addPublisher" text="Add new publisher" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                           </children>
+                        </GridPane>
+                        <GridPane prefHeight="120.0" prefWidth="311.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="0.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="151.0" minWidth="10.0" prefWidth="102.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="209.0" minWidth="10.0" prefWidth="209.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="ISBN:" />
+                              <Label text="Title:" GridPane.rowIndex="1" />
+                              <Label text="Publish year:" GridPane.rowIndex="2" />
+                              <Label text="Publisher ID:" GridPane.rowIndex="3" />
+                              <TextField fx:id="isbn_field" GridPane.columnIndex="1" />
+                              <TextField fx:id="title_field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="year_field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="publisherid_field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Button fx:id="add_book_btn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addBook" text="Add book +" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                           </children>
+                        </GridPane>
+                        <TableView fx:id="publisher_table" prefHeight="171.0" prefWidth="573.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="0.0">
+                          <columns>
+                            <TableColumn fx:id="col_publisherid" prefWidth="90.0" text="Publisher ID" />
+                            <TableColumn fx:id="col_publishername" prefWidth="154.0" text="Publisher Name" />
+                              <TableColumn fx:id="col_addr" prefWidth="154.0" text="Address" />
+                              <TableColumn fx:id="col_email" prefWidth="174.0" text="Contact Email" />
+                          </columns>
+                        </TableView>
+                        <Label layoutX="300.0" layoutY="149.0" text="All publisher here" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </bottom>
+   <center>
+      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="book_table" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn fx:id="col_isbn" prefWidth="75.0" text="ISBN" />
+                <TableColumn fx:id="col_title" prefWidth="316.0" text="Title" />
+                  <TableColumn fx:id="col_year" prefWidth="94.0" text="Publish year" />
+                  <TableColumn fx:id="col_publisher" prefWidth="226.0" text="Publisher" />
+                  <TableColumn fx:id="col_copies" prefWidth="116.0" text="Available Copies" />
+              </columns>
+            </TableView>
+            <Label fx:id="title_count" text="0 Titles" StackPane.alignment="TOP_RIGHT">
+               <StackPane.margin>
+                  <Insets right="5.0" top="5.0" />
+               </StackPane.margin>
+            </Label>
+            <Button fx:id="delete_book_btn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteBook" text="Delete This Title -" StackPane.alignment="BOTTOM_RIGHT" />
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>
